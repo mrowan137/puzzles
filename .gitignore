@@ -1,0 +1,8 @@
+# MacOS metadata
+.DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Backup
+*~
