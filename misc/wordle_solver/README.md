@@ -1,1 +1,1 @@
-5 letter words (`words.txt`) from: https://github.com/charlesreid1/five-letter-words/edit/master/sgb-words.txt
+5 letter words (`words.txt`) from: https://github.com/charlesreid1/five-letter-words/blob/master/sgb-words.txt
