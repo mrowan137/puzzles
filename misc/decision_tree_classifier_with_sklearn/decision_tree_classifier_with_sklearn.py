@@ -1,4 +1,7 @@
-"""Decision Tree Classifier with Iris dataset"""
+"""
+Decision Tree Classifier with Iris dataset
+See: https://archive.ics.uci.edu/ml/datasets/iris
+"""
 
 import random
 from sklearn.tree import DecisionTreeClassifier
@@ -16,13 +19,13 @@ y = iris.target
 
 # split to 80% training, 20% validation
 random.seed(0)
-train_idx = random.sample([i for i in range(len(x))], int(0.8 * len(x)))
+train_idx = random.sample(list(range(len(x))), int(0.8 * len(x)))
 validation_idx = [i for i in range(len(x)) if not i in train_idx]
 print(f"traing dataset is {train_idx}")
 print(f"testing dataset is {validation_idx}")
 
 # train and validation idx cover the full range of possible idx [0, 149]
-print(sorted(train_idx + validation_idx) == [i for i in range(len(x))])
+print(sorted(train_idx + validation_idx) == list(range(len(x))))
 
 # 'train' for traing dataset
 # x_train for training features(SL, SW, PL, PW)
