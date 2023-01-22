@@ -49,7 +49,7 @@ def smallest_number_evenly_divided_by(i, j):
     # each itself which can be written in prime factorization. the final answer
     # will be:
     #
-    #   p0^max(a0_m) * p1^max(a1_m) * ... * p1^max(aN_m),
+    #   p0^max(a0_m) * p1^max(a1_m) * ... * pN^max(aN_m),
     #
     # where the max is taken over m numbers in the range [i, j].
 
