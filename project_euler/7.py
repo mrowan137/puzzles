@@ -10,25 +10,26 @@ A: 104743
 from math import log
 
 
-def primes_less_than(m):
+def at_least_first_n_primes(n):
     # use prime counting function approximation to guess
     # how big do we need to count; factor of 2 for safety
-    # Solve: x / log(x) >= 2*m
+    # solve: x / log(x) >= 2*n
     x = 2
-    while int(x / log(x)) < 2 * m:
+    while int(x / log(x)) < 2 * n:
         x += 1
 
-    # cross off the non prime numbers less than or equal to n
+    # cross off the non-prime numbers less than or equal to x
+    # (i.e., the upper limit we calculated to count to get to n primes)
     numbers = list(range(2, x + 1))
     for i in range(len(numbers)):
         if numbers[i] == -1:
             continue
 
         multiple_of_n = numbers[i]
-        n = numbers[i]
+        num = numbers[i]
         idx = i
-        while idx + n < len(numbers):
-            idx, multiple_of_n = idx + n, multiple_of_n + n
+        while idx + num < len(numbers):
+            idx, multiple_of_n = idx + num, multiple_of_n + num
             numbers[idx] = -1
 
     return numbers
@@ -36,7 +37,7 @@ def primes_less_than(m):
 
 def find_nth_prime(n):
     # numbers has crossed out multiples, anything that remains is prime
-    numbers = primes_less_than(n)
+    numbers = at_least_first_n_primes(n)
 
     i, cnt = 0, 0
     while i < len(numbers):
