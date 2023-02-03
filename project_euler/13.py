@@ -228,7 +228,7 @@ def add(numbers):
     # add remaining digits of carry
     while carry:
         digit, carry = carry % 10, carry // 10
-        res = [digit] + res
+        res.insert(0, digit)
 
     return res[:10]
 
