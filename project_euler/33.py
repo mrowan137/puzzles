@@ -24,7 +24,7 @@ def digit_cancelling_fractions():
                     num = 10 * i + j
                     den = 10 * k + l
                     f = num / den
-                    if f < 1 and j != l:
+                    if f < 1:
                         # digit-cancelled possibilities for ij/kl
                         c1 = f == i / k and j == l  # i/k
                         c2 = f == i / l and j == k  # i/l
