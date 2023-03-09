@@ -1,6 +1,6 @@
 # Puzzles
 
-My collection of worked puzzles, for recreation, self-study, and learning.
+Collection of worked puzzles, for recreation, self-study, and learning.
 
 
 ## Description
