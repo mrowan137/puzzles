@@ -5,8 +5,7 @@ Collection of worked puzzles, for recreation, self-study, and learning.
 
 ## Description
 
-As a longtime puzzler who gets a lot of enjoyment out of creative problem
-solving, this is a place for me to compile various problems I've worked on:
+Contents:
 
 * [leetcode](https://github.com/mrowan137/puzzles/blob/main/leetcode): problems
   from the classic coding puzzles website
