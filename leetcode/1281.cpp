@@ -1,10 +1,14 @@
 // Runtime: 0 ms (Beats 100%)
-// Memory: 6.4 MB (Beats 87.4%)
+// Memory: 6 MB (Beats 6.7%)
 class Solution {
  public:
-  void printLinkedListInReverse(ImmutableListNode* head) {
-    if (!head) return;
-    printLinkedListInReverse(head->getNext());
-    head->printValue();
+  int subtractProductAndSum(int n) {
+    int digits_sum = 0, digits_product = 1;
+    while (n) {
+      digits_sum += n % 10;
+      digits_product *= n % 10;
+      n /= 10;
+    }
+    return digits_product - digits_sum;
   }
 };
