@@ -14,7 +14,7 @@ A: 26033 = sum([13, 5197, 5701, 6733, 8389])
 from math import sqrt, log10
 
 
-def is_prime(n, memo={}):
+def is_prime(n, memo):
     if n < 2:
         return False
 
@@ -67,7 +67,7 @@ def prime_pair_set(n):
             to_add = []
             for s in sets:
                 if valid_addition_to_prime_pair_set(i, s, memo):
-                    to_add += [[x for x in s]]  # add set that skips adding i
+                    to_add += [s.copy()]  # add set that skips adding i
                     s += [i]  # add set that adds i
 
             sets += to_add
