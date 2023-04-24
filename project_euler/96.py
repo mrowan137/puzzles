@@ -45,8 +45,8 @@ class Sudoku:
         if self.board_is_filled(board):
             if self.board_is_valid(board):
                 return board
-            else:
-                return False
+
+            return False
 
         i, j = self.first_empty_cell(board)
         for num in self.possible_nums(i, j, board):
@@ -121,10 +121,12 @@ class Sudoku:
 
     def first_empty_cell(self, board):
         i, j = -1, -1
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                if board[i][j] == 0:
+        for i, board_row in enumerate(board):
+            for j, board_val in enumerate(board_row):
+                if board_val == 0:
                     return i, j
+
+        return -1, -1
 
     def upper_left_digits(self):
         return int("".join([str(d) for d in self.solved_board[0][0:3]]))
@@ -134,10 +136,10 @@ class Sudoku:
         print(" " * 24 + "| {} |".format(self.name))
         print(" " * 24 + "-" * 11)
         print(" " * 10 + "ORIGINAL" + " " * 24 + "SOLVED")
-        for i in range(len(self.original_board)):
+        for i, original_row in enumerate(self.original_board):
             print(
                 "{}{}{}".format(
-                    self.original_board[i],
+                    original_row,
                     " --> " if i == 4 else "     ",
                     self.solved_board[i],
                 )
@@ -147,7 +149,7 @@ class Sudoku:
 
 def solve_boards(file_name):
     boards = {}
-    with open(file_name) as f:
+    with open(file_name, encoding="utf-8") as f:
         a_name, a_board = "", []
         for line in f:
             if line.find("Grid") != -1:
