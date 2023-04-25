@@ -16,7 +16,7 @@ d ≤ 1,000,000?
 A: 303963552391
 """
 
-from math import gcd, sqrt
+from math import sqrt
 
 
 def is_prime(n, memo):

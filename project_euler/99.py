@@ -39,10 +39,10 @@ def largest_exponential(file_name):
 
 
 if __name__ == "__main__":
-    file_path = "./base_exp.txt"
-    l, x, y = largest_exponential(file_path)
+    FILE_PATH = "./base_exp.txt"
+    l, x, y = largest_exponential(FILE_PATH)
     print(
         "Largest exponential in {} is on line {} ({}^{})".format(
-            file_path, l, x, y
+            FILE_PATH, l, x, y
         )
     )
