@@ -45,21 +45,24 @@ def diophantine(D):
     largest_x = -float("inf")
     res = -1
     for d in range(2, D + 1):
-        print(d)
         # no solutions in positive integers when d is square
         if sqrt(d) == int(sqrt(d)):
             continue
 
         y = 1
-        x = sqrt(1 + d * y**2)
+        x_squared = 1 + d * y**2
 
-        while int(x) != x:
+        while int(sqrt(x_squared)) != sqrt(x_squared):
             y += 1
-            x = sqrt(1 + d * y**2)
+            x_squared = 1 + d * y**2
 
         old = largest_x
-        largest_x = max(x, largest_x)
+        largest_x = max(sqrt(x_squared), largest_x)
         res = d if old != largest_x else res
+
+        print(
+            f"d = {d}, x = {sqrt(x_squared)}, y = {y}, x^2 - D*y^2 = {x_squared - d*y**2}"
+        )
 
     return res
 
