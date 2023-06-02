@@ -78,8 +78,6 @@ def diophantine(D):
 if __name__ == "__main__":
     upper = 1000
     print(
-        "For D <= {}, D = {} gives largest x of minimal solutions in x,".format(
-            upper, diophantine(upper)
-        )
-        + " for x^2 - D*y^2 = 1."
+        f"For D <= {upper}, D = {diophantine(upper)}"
+        + " gives largest x of minimal solutions in x, for x^2 - D*y^2 = 1."
     )
