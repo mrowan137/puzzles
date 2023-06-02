@@ -38,7 +38,11 @@ A:
 # So we can count from y = 1 until get to x is an integer.
 # It will be the minimal since sqrt(n) is monotonically increasing.
 
+import decimal
 from math import sqrt
+
+
+decimal.getcontext().prec = 20
 
 
 def diophantine(D):
@@ -49,12 +53,16 @@ def diophantine(D):
         if sqrt(d) == int(sqrt(d)):
             continue
 
-        y = 1
-        x_squared = 1 + d * y**2
+        y = decimal.Decimal(1)
+        while True:
+            y += decimal.Decimal(1)
+            x_squared = (
+                decimal.Decimal(1)
+                + decimal.Decimal(d) * decimal.Decimal(y) ** 2
+            )
 
-        while int(sqrt(x_squared)) != sqrt(x_squared):
-            y += 1
-            x_squared = 1 + d * y**2
+            if int(sqrt(x_squared)) ** 2 == x_squared:
+                break
 
         old = largest_x
         largest_x = max(sqrt(x_squared), largest_x)
