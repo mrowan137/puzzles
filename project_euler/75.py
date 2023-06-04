@@ -23,30 +23,28 @@ exactly one integer sided right angle triangle be formed?
 A: 
 """
 
+from math import isqrt, sqrt
+from collections import defaultdict
 
 def singular_integer_right_triangles(l):
+    perimeter_to_num_solns = defaultdict(int)
 
-    singular_solns = 0
-    for perimeter in range(l+1):
-        print(f"Checking perimeter = {perimeter}")
-        n_sols = 0
-        for c in range(1, perimeter//2):
-            if n_sols > 1:
-                    break
-                
-            for x in range(c+1, (c + perimeter)//2 + 1):
-                if n_sols > 1:
-                    break
-                
-                # a + b + c = perimeter
-                a, b = x - c, perimeter - x
-                #print(f"  perimeter = {perimeter}, a={a} b={b} c={c}")
-                n_sols += (a**2 + b**2 == c**2)
+    # iterate all possible right trangle with perimeter <= l, increment count
+    # Notes:
+    #   a + b + c <= l
+    #   a^2 + b^2 == c^2
+    #   a + b + sqrt(a^2 + b^2) <= l
+    # Solve for b gives limit in b:
+    #   b <= (l/2)*(2*a - l)/(a - l)
+    for a in range(1, l):
+        print(f"a = {a} / a_max = {l -1}")
+        for b in range(a, int((l/2)*(2*a - l)/(a - l)) + 1):
+            c_sqrt, c_isqrt = sqrt(a**2 + b**2), isqrt(a**2 + b**2)
+            #print(f"  perimeter = {a+b+c_sqrt}, a={a} b={b} c={c_sqrt}")
+            if c_sqrt == c_isqrt:
+                perimeter_to_num_solns[a + b + c_isqrt] += 1
 
-        if n_sols == 1:
-            print(f"  Singular solution found!")
-            
-        singular_solns += (n_sols == 1)
+    singular_solns = sum(cnt == 1 for cnt in perimeter_to_num_solns.values())
             
     return singular_solns
 
