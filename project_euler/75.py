@@ -20,37 +20,55 @@ integer sided right angle triangles.
 Given that L is the length of the wire, for how many values of L <= 1500000 can
 exactly one integer sided right angle triangle be formed?
 
-A: 
+A: 161667
 """
 
-from math import isqrt, sqrt
+from math import sqrt, gcd
 from collections import defaultdict
 
-def singular_integer_right_triangles(l):
-    perimeter_to_num_solns = defaultdict(int)
 
-    # iterate all possible right trangle with perimeter <= l, increment count
-    # Notes:
-    #   a + b + c <= l
-    #   a^2 + b^2 == c^2
-    #   a + b + sqrt(a^2 + b^2) <= l
-    # Solve for b gives limit in b:
-    #   b <= (l/2)*(2*a - l)/(a - l)
-    for a in range(1, l):
-        print(f"a = {a} / a_max = {l -1}")
-        for b in range(a, int((l/2)*(2*a - l)/(a - l)) + 1):
-            c_sqrt, c_isqrt = sqrt(a**2 + b**2), isqrt(a**2 + b**2)
-            #print(f"  perimeter = {a+b+c_sqrt}, a={a} b={b} c={c_sqrt}")
-            if c_sqrt == c_isqrt:
-                perimeter_to_num_solns[a + b + c_isqrt] += 1
+def singular_integer_right_triangles(l):
+    # Generate all Pythagorean triples with sum <= l
+    # https://en.wikipedia.org/wiki/Pythagorean_triple
+    #   a = k*(m^2 - n^2), b = k*(2*m*n), c = k*(m^2 + n^2)
+    # where m > n > 0, k > 0, m and n coprime, m and n not both odd.
+    # the formula generate all Pythagorean triples **uniquely**.
+    # note the perimeter:
+    #   a + b + c = k*2*m*(m + n) <= l
+    # solve for m gives limit on m we need to search (k = 1):
+    #   m <= (sqrt(2*l + 1) - 1)/2
+    perimeter_to_num_solns = defaultdict(int)
+    for m in range(2, int(0.5 * (sqrt(2 * l + 1) - 1)) + 1):
+        for n in range(1, m):
+            # exit conditions: m, n must be coprime; not both m, n odd
+            if not gcd(m, n) == 1 or (m % 2 == 1 and n % 2 == 1):
+                continue
+
+            k = 1
+            while True:
+                a, b, c = (
+                    k * (m**2 - n**2),
+                    k * (2 * m * n),
+                    k * (m**2 + n**2),
+                )
+
+                if a + b + c > l:
+                    break
+
+                # found a uniquely specified triple
+                print(f"  perimeter = {a+b+c}, a={a} b={b} c={c}, m={m}, n={n}")
+                perimeter_to_num_solns[a + b + c] += 1
+
+                k += 1
 
     singular_solns = sum(cnt == 1 for cnt in perimeter_to_num_solns.values())
-            
+
     return singular_solns
 
 
 if __name__ == "__main__":
     L = 1500000
     print(
-        f"Answer: {singular_integer_right_triangles(L)}"
+        f"Number of singular integer right triangles with perimeter less than"
+        + f" or equal to{L}: {singular_integer_right_triangles(L)}"
     )
