@@ -11,8 +11,6 @@ Given that 0 <= x1, y1, x2, y2 <= 50, how many right triangles can be formed?
 A: 14234
 """
 
-from math import sqrt
-
 
 def distance_squared(p1, p2):
     x1, y1 = p1
