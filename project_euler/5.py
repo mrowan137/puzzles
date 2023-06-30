@@ -79,7 +79,7 @@ def smallest_number_evenly_divided_by(i, j):
         for n in number_to_prime_factorization:
             exp = max(exp, number_to_prime_factorization[n][i])
 
-        res *= p ** exp
+        res *= p**exp
 
     return res
 
