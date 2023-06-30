@@ -51,8 +51,8 @@ def calculate_partitions(n):
 
 def coin_partitions(target):
     # Manually choose it to be big enough
-    N = 100000
-    partitions = calculate_partitions(N)
+    n = 100000
+    partitions = calculate_partitions(n)
 
     i = 1
     while i < len(partitions):
@@ -61,15 +61,15 @@ def coin_partitions(target):
 
         i += 1
 
-    res = (i, partitions[i]) if i <= N else None
+    res = (i, partitions[i]) if i <= n else None
     return res
 
 
 if __name__ == "__main__":
     TARGET = 1000000
-    res = coin_partitions(TARGET)
-    if res:
-        N, PARTITIONS = res
+    RES = coin_partitions(TARGET)
+    if RES:
+        N, PARTITIONS = RES
         print(f"p({N}) = {PARTITIONS} is divisible by {TARGET}.")
     else:
         print("No solution found, increase search range.")
