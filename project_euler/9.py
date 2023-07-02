@@ -17,7 +17,7 @@ def find_pythagorean_triplet():
             if c <= b:
                 continue
 
-            if a ** 2 + b ** 2 == c ** 2:
+            if a**2 + b**2 == c**2:
                 return (a, b, c)
 
 
