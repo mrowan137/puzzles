@@ -15,7 +15,7 @@ Contents:
   problem solving and programming skills,
   [Project Euler](https://projecteuler.net/).
 * [misc](https://github.com/mrowan137/puzzles/blob/main/misc): these are from
-  various sources, including online forums, blogs, and discussions with friends.
+  various sources, including online forums, blogs, and discussions.
 
 
 ## Author
