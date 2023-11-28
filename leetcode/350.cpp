@@ -20,7 +20,7 @@ class Solution {
     vector<int> res = {};
     for (auto pair : n1_count) {
       int count = std::min(n1_count[pair.first], n2_count[pair.first]);
-      for (int i = 0; i < count; ++i) res.push_back(pair.first);
+      for (int i = 0; i < count; ++i) res.emplace_back(pair.first);
     }
 
     return res;
