@@ -1,13 +1,16 @@
-// Runtime: 39 ms, faster than 6.22% of C++ online submissions for Delete Node in a Linked List.
-// Memory Usage: 7.7 MB, less than 39.02% of C++ online submissions for Delete Node in a Linked List.
+// Runtime: 4 ms
+// Memory Usage: 8.2 MB
 class Solution {
  public:
-  void deleteNode(ListNode *node) {
-    node->val = (node->next)->val;
-    if (!node->next->next) {
+  void deleteNode(ListNode* node) {
+    if (node->next->next == nullptr) {
+      node->val = node->next->val;
+      delete node->next;
       node->next = nullptr;
       return;
     }
+    node->val = node->next->val;
     deleteNode(node->next);
+    return;
   }
 };
