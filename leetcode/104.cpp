@@ -1,3 +1,30 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+// Runtime: 0 ms
+// Memory Usage: 19.1 MB
+class Solution {
+ public:
+  int maxDepth(TreeNode* root) {
+    // 1. base case
+    if (root == nullptr) return 0;
+
+    // 2. non-nullptr root
+    //   - compare left and right roots' max depth, return max + 1
+    unsigned int max_depth = std::max(maxDepth(root->left),
+                                      maxDepth(root->right));
+    return max_depth + 1;
+  }
+};
+
 // Runtime: 17 ms, faster than 32.41% of C++ online submissions for Maximum Depth of Binary Tree.
 // Memory Usage: 19 MB, less than 14.19% of C++ online submissions for Maximum Depth of Binary Tree.
 // BFS
@@ -21,26 +48,3 @@ class Solution {
   }
 };
 
-
-// Runtime: 16 ms, faster than 38.42% of C++ online submissions for Maximum Depth of Binary Tree.
-// Memory Usage: 18.9 MB, less than 14.19% of C++ online submissions for Maximum Depth of Binary Tree.
-// DFS
-class Solution {
- public:
-  int maxDepth(TreeNode* root) {
-    if (!root) return 0;
-    return 1 + max(maxDepth(root->left), maxDepth(root->right));
-  }
-};
-
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
