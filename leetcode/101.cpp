@@ -1,3 +1,5 @@
+// Runtime: 5 ms
+// Memory Usage: 16.7 MB
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
