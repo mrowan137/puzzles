@@ -7,15 +7,9 @@ Collection of worked puzzles.
 
 Contents:
 
-* [leetcode](https://github.com/mrowan137/puzzles/blob/main/leetcode): problems
-  from the classic coding puzzles website
-  [LeetCode](https://leetcode.com/problems/).
-* [project_euler](https://github.com/mrowan137/puzzles/blob/main/project_euler):
-  challenging mathematical and computational problems that exercise creative
-  problem solving and programming skills,
-  [Project Euler](https://projecteuler.net/).
-* [misc](https://github.com/mrowan137/puzzles/blob/main/misc): these are from
-  various sources, including online forums, blogs, and discussions.
+* [project_euler](https://github.com/mrowan137/puzzles/blob/main/project_euler)
+* [leetcode](https://github.com/mrowan137/puzzles/blob/main/leetcode)
+* [misc](https://github.com/mrowan137/puzzles/blob/main/misc)
 
 
 ## Author
@@ -30,6 +24,6 @@ Michael E. Rowan — [mrowan137](https://github.com/mrowan137) — [michael@mrow
 
 ## References
 
-* [LeetCode](https://leetcode.com/problems/)
 * [Project Euler](https://projecteuler.net/)
+* [LeetCode](https://leetcode.com/problems/)
 * [Kaggle](https://www.kaggle.com/datasets)
